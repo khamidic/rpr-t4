@@ -1,14 +1,28 @@
 package ba.unsa.etf.rpr.t4;
 
+import java.util.Set;
+
 public class PlanStudija {
     private int trenutniSemestar;
-    private Predmet[] obavezniPredmeti;
-    private Predmet[] izborniPredmeti;
+    private int trenutnaGodina;
+    private int trenutniCiklus;
+    private Set<String> obavezniPredmeti;
+    private Set<String> izborniPredmeti;
 
-    public PlanStudija(int trenutniSemestar, Predmet[] obavezniPredmeti, Predmet[] izborniPredmeti) {
+    public PlanStudija(int trenutniSemestar, int trenutnaGodina, int trenutniCiklus, Set<String> obavezniPredmeti, Set<String> izborniPredmeti) {
         this.trenutniSemestar = trenutniSemestar;
+        this.trenutnaGodina = trenutnaGodina;
+        this.trenutniCiklus = trenutniCiklus;
         this.obavezniPredmeti = obavezniPredmeti;
         this.izborniPredmeti = izborniPredmeti;
+    }
+
+    public int getTrenutnaGodina() {
+        return trenutnaGodina;
+    }
+
+    public void setTrenutnaGodina(int trenutnaGodina) {
+        this.trenutnaGodina = trenutnaGodina;
     }
 
     public int getTrenutniSemestar() {
@@ -19,19 +33,41 @@ public class PlanStudija {
         this.trenutniSemestar = trenutniSemestar;
     }
 
-    public Predmet[] getObavezniPredmeti() {
+    public int getTrenutniCiklus() {
+        return trenutniCiklus;
+    }
+
+    public void setTrenutniCiklus(int trenutniCiklus) {
+        this.trenutniCiklus = trenutniCiklus;
+    }
+
+    public Set<String> getObavezniPredmeti() {
         return obavezniPredmeti;
     }
 
-    public void setObavezniPredmeti(Predmet[] obavezniPredmeti) {
+    public void setObavezniPredmeti(Set<String> obavezniPredmeti) {
         this.obavezniPredmeti = obavezniPredmeti;
     }
 
-    public Predmet[] getIzborniPredmeti() {
+    public Set<String> getIzborniPredmeti() {
         return izborniPredmeti;
     }
 
-    public void setIzborniPredmeti(Predmet[] izborniPredmeti) {
+    public void setIzborniPredmeti(Set<String> izborniPredmeti) {
         this.izborniPredmeti = izborniPredmeti;
+    }
+
+    public void dodajIzborniPredmet(String izborniPredmet) throws IllegalArgumentException {
+        for(String x : izborniPredmeti) {
+            if(x.equals(izborniPredmet)) throw new IllegalArgumentException("Predmet vec postoji!");
+        }
+        izborniPredmeti.add(izborniPredmet);
+    }
+
+    public void dodajObavezniPredmet(String obavezniPredmet) throws IllegalArgumentException {
+        for(String x : obavezniPredmeti) {
+            if(x.equals(obavezniPredmet)) throw new IllegalArgumentException("Predmet vec postoji!");
+        }
+        izborniPredmeti.add(obavezniPredmet);
     }
 }
