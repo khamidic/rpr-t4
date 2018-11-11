@@ -38,7 +38,8 @@ public class PlanStudija {
         return trenutnaGodina;
     }
 
-    public void setTrenutnaGodina(int trenutnaGodina) {
+    public void setTrenutnaGodina(int trenutnaGodina) throws IllegalArgumentException {
+        if(trenutnaGodina > brojGodinaStudiranja) throw new IllegalArgumentException("Pogresna godina!");
         this.trenutnaGodina = trenutnaGodina;
     }
 
@@ -46,7 +47,8 @@ public class PlanStudija {
         return trenutniCiklus;
     }
 
-    public void setTrenutniCiklus(int trenutniCiklus) {
+    public void setTrenutniCiklus(int trenutniCiklus) throws IllegalArgumentException {
+        if(trenutniCiklus > 3) throw new IllegalArgumentException("Pogresan ciklus!");
         this.trenutniCiklus = trenutniCiklus;
     }
 
