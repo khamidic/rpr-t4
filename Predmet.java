@@ -1,5 +1,7 @@
 package ba.unsa.etf.rpr.t4;
 
+import java.util.Set;
+
 public class Predmet {
     private String nazivPredmeta;
     private int ECTS;
@@ -7,9 +9,9 @@ public class Predmet {
     private int godina;
     private String zaduzeniProfesor;
     private int brojStudenata;
-    private Student[] studenti;
+    private Set<Student> studenti;
 
-    public Predmet(String nazivPredmeta, int ECTS, int ciklus, int godina, String zaduzeniProfesor, int brojStudenata, Student[] studenti) {
+    public Predmet(String nazivPredmeta, int ECTS, int ciklus, int godina, String zaduzeniProfesor, int brojStudenata, Set<Student> studenti) {
         this.nazivPredmeta = nazivPredmeta;
         this.ECTS = ECTS;
         this.ciklus = ciklus;
@@ -23,7 +25,8 @@ public class Predmet {
         return ciklus;
     }
 
-    public void setCiklus(int ciklus) {
+    public void setCiklus(int ciklus) throws IllegalArgumentException {
+        if(ciklus > 3) throw new IllegalArgumentException("Nije ispravan ciklus!");
         this.ciklus = ciklus;
     }
 
@@ -31,7 +34,7 @@ public class Predmet {
         return godina;
     }
 
-    public void setGodina(int godina) {
+    public void setGodina(int godina) throws IllegalArgumentException {
         this.godina = godina;
     }
 
@@ -67,16 +70,26 @@ public class Predmet {
         this.brojStudenata = brojStudenata;
     }
 
-    public Student[] getStudenti() {
+    public Set<Student> getStudenti() {
         return studenti;
     }
 
-    public void setStudenti(Student[] studenti) {
+    public void setStudenti(Set<Student> studenti) {
         this.studenti = studenti;
     }
 
-    public void upisiStudenta(Student student) {}
+    public void upisiStudenta(Student student) throws IllegalArgumentException {
+        for(Student x : studenti) {
+            if(x.getBrojIndeksa() == student.getBrojIndeksa()) throw new IllegalArgumentException("Student vec upisan na predmet!");
+        }
+        studenti.add(student);
+    }
 
-    public void upisiStudente(Student[] studenti) {}
+    public void upisiStudente(Student[] studentarija) {
+        for(int i = 0; i < studentarija.length; i++) {
+            if(studenti.contains(studentarija[i])) throw new IllegalArgumentException("Student sa indeksom (" + studentarija[i].getBrojIndeksa() + ") je vec upisan!");
+        }
+        for(int i = 0; i < studentarija.length; i++) this.studenti.add(studentarija[i]);
+    }
 
 }
