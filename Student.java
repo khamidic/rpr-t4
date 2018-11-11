@@ -62,7 +62,21 @@ public class Student {
         return false;
     }
 
-    public void predjiNaSljSemestar() {
+    public void predjiNaSljGodinu() throws IllegalAccessError {
+        try {
+            planStudija.upisiNaSljGodinu();
+        }
+        catch (IllegalAccessError e) {
+            throw e;
+        }
+    }
 
+    public void predjiNaSljCiklus() throws IllegalAccessError {
+        try {
+            planStudija.upisiNaSljCiklus();
+        }
+        catch (IllegalAccessError e) {
+            throw e;
+        }
     }
 }

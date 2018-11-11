@@ -82,7 +82,7 @@ public class PlanStudija {
         izborniPredmeti.add(obavezniPredmet);
     }
 
-    public void upisiNaSljSemestar() throws IllegalAccessError {
+    public void upisiNaSljGodinu() throws IllegalAccessError {
         int ectsKrediti = 0;
         for(Predmet x : polozeniPredmeti) {
             if(x.getGodina() == trenutnaGodina) ectsKrediti += x.getECTS();
