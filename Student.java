@@ -9,7 +9,13 @@ public class Student {
     private int brojIndeksa;
     private PlanStudija planStudija;
 
-    public Student(String ime, String prezime, Date datumRodjenja, int brojIndeksa, PlanStudija planStudija) {}
+    public Student(String ime, String prezime, Date datumRodjenja, int brojIndeksa, PlanStudija planStudija) {
+        this.ime = ime;
+        this.prezime = prezime;
+        this.datumRodjenja = datumRodjenja;
+        this.brojIndeksa = brojIndeksa;
+        this.planStudija = planStudija;
+    }
 
     public String getIme() {
         return ime;
@@ -52,6 +58,11 @@ public class Student {
     }
 
     public boolean jeLiUpisan() {
-        return true;
+        if(planStudija != null) return true;
+        return false;
+    }
+
+    public void predjiNaSljSemestar() {
+
     }
 }

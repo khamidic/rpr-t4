@@ -3,16 +3,36 @@ package ba.unsa.etf.rpr.t4;
 public class Predmet {
     private String nazivPredmeta;
     private int ECTS;
+    private int ciklus;
+    private int godina;
     private String zaduzeniProfesor;
     private int brojStudenata;
     private Student[] studenti;
 
-    public Predmet(String nazivPredmeta, int ECTS, String zaduzeniProfesor, int brojStudenata, Student[] studenti) {
+    public Predmet(String nazivPredmeta, int ECTS, int ciklus, int godina, String zaduzeniProfesor, int brojStudenata, Student[] studenti) {
         this.nazivPredmeta = nazivPredmeta;
         this.ECTS = ECTS;
+        this.ciklus = ciklus;
+        this.godina = godina;
         this.zaduzeniProfesor = zaduzeniProfesor;
         this.brojStudenata = brojStudenata;
         this.studenti = studenti;
+    }
+
+    public int getCiklus() {
+        return ciklus;
+    }
+
+    public void setCiklus(int ciklus) {
+        this.ciklus = ciklus;
+    }
+
+    public int getGodina() {
+        return godina;
+    }
+
+    public void setGodina(int godina) {
+        this.godina = godina;
     }
 
     public String getNazivPredmeta() {
